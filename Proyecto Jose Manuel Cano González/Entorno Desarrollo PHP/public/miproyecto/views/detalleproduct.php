@@ -90,6 +90,7 @@
                 <h2><?php echo $data['nombre']; ?></h2>
                 <p><?php echo $data['descripcion']; ?></p>
                 <p>Precio: <?php echo $data['precio']; ?>€</p>
+                    <a href="/miproyecto/index.php">Volver Atrás</a>
                 <!-- Agrega cualquier otra información relevante del producto aquí -->
             </div>
         </div>

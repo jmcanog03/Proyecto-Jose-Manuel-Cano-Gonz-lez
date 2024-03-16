@@ -203,7 +203,6 @@ foreach ($data as $producto) {
     <footer class="footer">
         <div class="container text-center">
             <span>© 2024 Tienda Deportiva DeporteVest</span>
-            <a href="listadoproduct.php" class="btn btn-primary">Ir a comprar</a>
         </div>
     </footer>
 

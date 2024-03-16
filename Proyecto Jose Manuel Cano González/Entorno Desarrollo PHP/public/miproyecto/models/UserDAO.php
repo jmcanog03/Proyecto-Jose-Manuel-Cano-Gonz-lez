@@ -1,5 +1,4 @@
 <?php
-
 include ('Database/Database.php');
 
 // Crear Clase dao que ataca la tabla user

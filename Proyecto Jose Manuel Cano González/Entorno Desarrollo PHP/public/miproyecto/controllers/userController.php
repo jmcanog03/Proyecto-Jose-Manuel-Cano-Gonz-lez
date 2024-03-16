@@ -13,7 +13,7 @@ class UserController
 
         $arrayUsuarios = $userDao->getAllUsers();
         
-        View::show('index', $arrayUsuarios);
+        View::show('usersview', $arrayUsuarios);
     }
 
 

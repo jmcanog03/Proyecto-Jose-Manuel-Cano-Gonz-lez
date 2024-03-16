@@ -105,7 +105,7 @@
                     <a class="nav-link" href="#">Gestión de Productos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gestión de Usuarios</a>
+                    <a class="nav-link" href="usersview.php" target=blank>Gestión de Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Configuración</a>

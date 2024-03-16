@@ -3,11 +3,11 @@
 </html>
 
 <?php
-
+print_r($data);
 echo "<table border=1>";
-echo "<tr><td>Nombre</td> <td>Email</td></tr>";
+echo "<tr><td>Id_Usuario</td> <td>Nombre</td></tr>";
 foreach ($data as $usuario){
-    echo "<tr><td>".$usuario['nombre']."</td><td>".$usuario['email']."</td></tr>";
+    echo "<tr><td>".$usuario['id_usuario']."</td><td>".$usuario[' nombre']."</td></tr>";
 }
 
 echo "</table>";
