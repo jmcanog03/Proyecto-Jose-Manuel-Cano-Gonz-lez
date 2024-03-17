@@ -60,7 +60,7 @@
         .fa-custom {
             font-size: 30px;
             margin-left: 29px;
-            /* Tamaño personalizado */
+        
         }
     </style>
 </head>
