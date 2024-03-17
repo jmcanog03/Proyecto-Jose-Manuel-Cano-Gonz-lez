@@ -14,7 +14,7 @@ if (isset ($_REQUEST['action']) && isset ($_REQUEST['controller'])) {
     session_start();
     $productDAO=new ProductoDAO();
     $arrayProductos=$productDAO->getAllProducts();
-    view::show('primos', $arrayProductos);
+    view::show('paginaprincipal', $arrayProductos);
 }
 
 
