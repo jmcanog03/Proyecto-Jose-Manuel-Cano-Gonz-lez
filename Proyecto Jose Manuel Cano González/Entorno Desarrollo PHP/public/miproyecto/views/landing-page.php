@@ -189,12 +189,26 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="contrasena">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name="contrasena">
                             <?php
                     if (isset($data['contrasena']))
                         echo '<p>' . $data['contrasena'] . '</p>';
                     ?>
                         </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Di tu rol</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Introduce tu rol" name="rol">
+                            <?php
+                    if (isset($data['rol']))
+                        echo '<p>' . $data['rol'] . '</p>';
+                    ?>
+                        </div>
+
+
+
+
                         <button type="submit" class="btn btn-primary" name="registro">Iniciar Sesión</button>
                     </form>
                 </div>
@@ -204,6 +218,10 @@
             </div>
         </div>
     </div>
+
+
+    
+
     
     
     <!-- Scripts -->

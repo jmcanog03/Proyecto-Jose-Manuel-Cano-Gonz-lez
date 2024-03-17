@@ -32,14 +32,21 @@ public function getProductById ($id){
     return $stmt->fetch();        
 }
 
+// Funcion que añade un producto a la base de datos
 public function addProduct ($nombre, $descripcion, $precio, $stock, $categoria) {
-    $stmt=$this->con_BD->prepare("Insert Into Productos (nombre,descripcion,precio,stock,categoria) values (:nombre, :descripcion, :precio, :stock, :categoria)");
-    $stmt->bindParam(':nombre', $nombre);
-    $stmt->bindParam(':descripcion', $descripcion);
-    $stmt->bindParam(':precio', $precio);
-    $stmt->bindParam(':stock', $stock);
-    $stmt->bindParam(':categoria', $categoria);
-    $stmt->execute();
+
+    try {
+        $stmt=$this->con_BD->prepare("Insert Into Productos (nombre,descripcion,precio,stock,categoria) values (:nombre, :descripcion, :precio, :stock, :categoria)");
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':precio', $precio);
+        $stmt->bindParam(':stock', $stock);
+        $stmt->bindParam(':categoria', $categoria);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        return -2;
+    }
+    
 }
 }
 

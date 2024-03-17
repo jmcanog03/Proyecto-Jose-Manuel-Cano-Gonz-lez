@@ -11,10 +11,11 @@ class UserController
 
         // recuperar datos
 
-        $arrayUsuarios = $userDao->getAllUsers();
-        
+        $arrayUsuarios = $userDao -> getAllUsers();
         View::show('usersview', $arrayUsuarios);
     }
+
+
 
 
     function addUser()
@@ -28,18 +29,27 @@ class UserController
             if (empty($_POST['contrasena']))
                 $erroresForm['contrasena'] = "Debes introducir una contraseña";
 
-            if (count($erroresForm) == 0) {
-                $email = filtrado($_POST['nombre']);
-                $contrasena = filtrado($_POST['contrasena']);
+            if (empty($_POST['rol']))
+                $erroresForm['rol'] = "Debes introducir un rol para agregarte a la base de datos";
 
-                $userDao = new UserDAO();
-                $usuarioValido = $userDao->validarInicioSesion($email, $contrasena);
+            if (count($erroresForm) == 0) {
+                $nombre = filtrado($_POST['nombre']);
+                $contraseña = filtrado($_POST['contrasena']);
+                $rol = filtrado($_POST['rol']);
+
+                $userDao = new UserDao();
+                //$userDao->addUser($nombre,$email);
+                //$arrayUser=$userDao->getAllUsers();
+
+                //view::show('usersview', $arrayUser);
+
+                $usuarioValido = $userDao->validarInicioSesion($nombre, $contraseña, $rol);
 
                 if ($usuarioValido) {
                     // Iniciar sesión
                     session_start();
                     // Redirigir al usuario a la página principal
-                    header("Location: views/landig-page.php");
+                    header("Location: index.php");
                     exit();
                 } else {
                     // Mostrar mensaje de error
@@ -51,5 +61,8 @@ class UserController
             }
         }
     }
+
+
+    
 }
 ?>

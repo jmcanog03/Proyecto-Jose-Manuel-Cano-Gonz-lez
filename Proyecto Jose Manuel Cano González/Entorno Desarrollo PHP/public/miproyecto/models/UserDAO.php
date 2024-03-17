@@ -38,27 +38,47 @@ class UserDao{
         }
     }
 
-    public function adduser ($contraseña,   $mailUser) {
-        $stmt=$this ->conBD->prepare("Insert Into Usuarios (email,contrasena) values (:email, :contrasena)");
+      // Metodo que añade un usuario a la base de datos
+    public function adduser ($nombre, $contraseña, $rol) {
+
+      try{
+        $stmt=$this ->conBD->prepare("Insert Into Usuarios (nombre,contrasena,rol) values (:nombre, :contrasena, :rol)");
+        $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':contrasena', $contraseña);
-        $stmt->bindParam(':email', $mailUser);
+        $stmt->bindParam(':rol', $rol);
         $stmt->execute();
+      }catch  (PDOException $e) {
+        return 0;
+      }
+      
     }
 
-    function validarInicioSesion($nombre, $password) {
+    function validarInicioSesion($nombre, $password, $rol) {
 
-        // Consultar la base de datos para verificar el usuario y la contraseña
-        $stmt = $this->conBD->prepare("SELECT * FROM Usuarios WHERE nombre = :nombre AND contrasena = :contrasena AND nombre IS NOT NULL AND contrasena IS NOT NULL");
+      try {
+           // Consultar la base de datos para verificar el usuario y la contraseña
+        $stmt = $this->conBD->prepare("SELECT * FROM Usuarios WHERE nombre = :nombre AND contrasena = :contrasena AND rol = :rol AND nombre IS NOT NULL AND contrasena IS NOT NULL AND rol IS NOT NULL");
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':contrasena', $password);
+        $stmt->bindParam(':rol', $rol);
         $stmt->execute();
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+      } catch  (PDOException $e) {
+        return -1;
+      }
       
-        // Verificar si se encontraron resultados y si los campos no están vacíos
+       // Verificar si se encontraron resultados y si los campos no están vacíos
         if ($usuario) {
           // Redireccionar a la página index
-          header("Location: index.php");
-          exit();
+          if ($rol === 'normal') {
+            //echo "Redirigiendo a index.php"; // Depuración
+            header("Location: index.php");
+            exit();
+        } else {
+            //echo "Redirigiendo a paginaadmin.php"; // Depuración
+            header("Location: /miproyecto/views/paginaadmin.php");
+            exit();
+        }
         } else {
           // Devolver falso si el usuario no existe o los campos están vacíos
           return false;
