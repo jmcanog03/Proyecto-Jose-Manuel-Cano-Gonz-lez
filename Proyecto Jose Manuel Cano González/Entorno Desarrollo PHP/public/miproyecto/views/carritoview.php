@@ -88,8 +88,8 @@ session_start();
                 $precioTotal = 0;
 
                 // Verificar si la sesión y $_SESSION['taxi'] están definidos antes de iterar sobre ellos
-                if (isset($_SESSION['taxi']) && is_array($_SESSION['taxi'])) {
-                    foreach ($_SESSION['taxi'] as $idProducto => $infoProducto) {
+                if (isset($_SESSION['carrito']) && is_array($_SESSION['carrito'])) {
+                    foreach ($_SESSION['carrito'] as $idProducto => $infoProducto) {
                         $cantidad = $infoProducto['cantidad'];
                         $producto = $infoProducto['producto'];
 

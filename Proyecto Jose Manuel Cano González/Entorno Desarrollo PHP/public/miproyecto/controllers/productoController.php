@@ -74,9 +74,9 @@ class ProductoController
    
     
     
-    function addTaxi() {
-        if (!isset($_SESSION['taxi'])) {
-            $_SESSION['taxi'] = array();
+    function addCarrito() {
+        if (!isset($_SESSION['carrito'])) {
+            $_SESSION['carrito'] = array();
         }
     
         // Verifica si se ha proporcionado una cantidad válida
@@ -92,7 +92,7 @@ class ProductoController
         $producto = $productoDao->getProductById($_REQUEST['id']); // Ajusta según sea necesario
     
         // Añadir el producto al carrito con la cantidad seleccionada y sus detalles
-        $_SESSION['taxi'][$_REQUEST['id']] = array(
+        $_SESSION['carrito'][$_REQUEST['id']] = array(
             'cantidad' => $cantidad,
             'producto' => $producto
         );
